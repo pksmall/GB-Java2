@@ -1,15 +1,24 @@
-package hw1;
-
+import animals.*;
+import obstances.*;
 /**
- * 1. Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4, при подаче массива другого размера необходимо бросить исключение MyArraySizeException.
- * 2. Далее метод должен пройтись по всем элементам массива, преобразовать в int, и просуммировать. Если в каком-то элементе массива преобразование не удалось (например, в
- * ячейке лежит символ или текст вместо числа), должно быть брошено исключение MyArrayDataException, с детализацией в какой именно ячейке лежат неверные данные.
- * 3. В методе main() вызвать полученный метод, обработать возможные исключения MySizeArrayException и MyArrayDataException, и вывести результат расчета.
+ * Write a description of class Main here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
  */
 public class Main {
 
-  public static void main(String[] args) {
-
-  }
-
+    public static void main(String[] args) {
+        Animal[] zoo = {new Cat("Murzik"), new Hen("Izzy"), new Hippo("Hippopo")};
+        Track track = new Track(80);
+        Wall wall = new Wall(3);
+        Water water = new Water(10);
+        
+        for (Animal animal : zoo) {
+            System.out.println(animal + " say: " + animal.voice());
+            System.out.println(" run: " + track.doIt(animal));
+            System.out.println(" jump: " + wall.doIt(animal));
+            System.out.println(" swim: " + water.doIt(animal));
+        }    
+    }
 }
