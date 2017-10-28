@@ -19,10 +19,8 @@ public class Course {
     }
 
     public void doIt(Team tM) {
-        for(Animal animal: tM.getAnimals()) {
-            for(Obstacle obStackle: obStacles) {
-                System.out.println(animal + " try to get " + obStackle.getName() + ": " + obStackle.doIt(animal));
-            }
+        for(Obstacle obStackle: obStacles) {
+            tM.doIt(obStackle);
         }
     }
 }

@@ -34,10 +34,11 @@ public class Main {
         // our team
         Animal[] zooTeam = {new Cat("Murzik"), new Hen("Izzy"), new Hippo("Hippopo"), new Duck("Donald")};
 
+
         Course c = new Course(); // Создаем полосу препятствий
         Team team = new Team("Super Team", zooTeam); // Создаем команду
+        System.out.println("Team Name: " + team.getName());
         c.doIt(team); // Просим команду пройти полосу
-        System.out.println();
-        team.showResults(); // Показываем результаты
+        System.out.println(team.showResults()); // Показываем результаты
     }
 }
