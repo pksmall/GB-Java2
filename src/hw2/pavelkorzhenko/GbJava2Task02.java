@@ -56,11 +56,13 @@ public class GbJava2Task02 {
             } catch (ArithmeticException exs) {
                 System.out.println(exs);
                 try {
-                    ArrayOfElements = arrayToFile("arrayfile.txt");
+                    ArrayOfElements = arrayFromFile("arrayfile.txt");
                     try {
                         System.out.println(sumArrayElements(ArrayOfElements));
                     } catch (ArithmeticException nbex) {
                         System.out.println(nbex);
+                    } catch (ArrayIndexOutOfBoundsException aoex) {
+                        System.out.println(aoex);
                     }
                 } catch (IOException ioex) {
                     System.out.println(ioex);
@@ -72,7 +74,7 @@ public class GbJava2Task02 {
     }
 
     // file to array
-    public static String[][] arrayToFile(String filename) throws IOException {
+    public static String[][] arrayFromFile(String filename) throws IOException {
         String[][] array = new String[SIZE][SIZE];
 
         File file = new File(filename);
