@@ -9,8 +9,8 @@ import java.util.List;
 
 /**
  * @author Pavel Korzhenko
- * @version 0.1 2017/10/31
- * @task 03
+ * @version 0.1 2017/11/01
+ * @task 04
  * @mark
  *
  * 1. Создать массив с набором слов (10-20 слов, должны встречаться повторяющиеся). Найти и вывести список
@@ -35,6 +35,9 @@ public class GbJava2Task03 {
         {
             String sCurrentLine;
             while ((sCurrentLine = br.readLine()) != null) {
+                // разделаяем полученую строку из файла
+                // \W+ слово разделенная пробелом или знаками применания
+                // и все слова больше 2-х символов засовываем в массив и хешмап.
                 for(String endWord: sCurrentLine.split("\\W+", sCurrentLine.length())) {
                     if (endWord.length() > 2) {
                         words.add(endWord);
@@ -49,6 +52,8 @@ public class GbJava2Task03 {
             System.out.println(words);
 
             // выводим уникальные слова и кол-во их в массиве.
+            // не учитываем регист , можно добавить перевод всех в нижний.
+            // но в условии задачи ничего про это не сказано.
             for (String endWord : wordsCount.keySet()) {
                 System.out.println(endWord + " " + wordsCount.get(endWord));
             }
