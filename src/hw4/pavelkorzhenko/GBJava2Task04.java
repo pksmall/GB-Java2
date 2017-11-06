@@ -1,10 +1,5 @@
 package pavelkorzhenko;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.text.*;
-
 /**
  * @author Pavel Korzhenko
  * @version 0.1 2017/11/01
@@ -18,6 +13,14 @@ import javax.swing.text.*;
  * 2. * Задание повышенной сложности - все сообщения должны логгироваться (добавляться) в текстовый файл.
  */
 
+import java.awt.*;
+import java.awt.event.*;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import javax.swing.*;
+
 public class GBJava2Task04 extends JFrame  implements ActionListener{
     final String TITLE_OF_PROGRAM = "Simple Task 04";
     final String BTN_ENTER = "Enter";
@@ -25,12 +28,24 @@ public class GBJava2Task04 extends JFrame  implements ActionListener{
     JTextArea dialogue;
     JTextField message; // field for entering messages
 
+    Logger logger = Logger.getLogger("MyLog");
+    FileHandler fh;
 
     public static void main(String[] args) {
         new GBJava2Task04();
     }
 
     GBJava2Task04() {
+        try {
+            fh = new FileHandler("MyLogFile.log");
+            logger.setUseParentHandlers(false);
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+        } catch (SecurityException | IOException e) {
+            System.out.println(e);
+        }
+
         setTitle(TITLE_OF_PROGRAM);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400,200);
@@ -47,6 +62,7 @@ public class GBJava2Task04 extends JFrame  implements ActionListener{
 
         message = new JTextField();
         message.addActionListener(this);
+        message.setFont(new Font("Dialog", Font.PLAIN, 26));
 
         JButton enter = new JButton(BTN_ENTER);
         enter.addActionListener(this);
@@ -67,14 +83,8 @@ public class GBJava2Task04 extends JFrame  implements ActionListener{
     public void actionPerformed(ActionEvent event) {
         if (message.getText().trim().length() > 0) {
             try {
-                /*StyledDocument doc = dialogue.getStyledDocument();
-                doc.insertString(doc.getLength(), message.getText() + "\n",
-                        new SimpleAttributeSet());
-                doc.insertString(doc.getLength(),
-                        TITLE_OF_PROGRAM.substring(0, 9) +
-                                sbot.sayInReturn(message.getText(), ai.isSelected()) + "\n",
-                        botStyle);*/
                 dialogue.append(message.getText() + "\n");
+                logger.info(message.getText());
             } catch(Exception e) { }
         }
         message.setText("");
