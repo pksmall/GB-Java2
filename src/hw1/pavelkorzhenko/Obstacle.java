@@ -1,7 +1,5 @@
 package pavelkorzhenko;
 
-import animals.Animal;
-
 /**
  * Write a description of interface Flyable here.
  *
@@ -9,6 +7,8 @@ import animals.Animal;
  * @version v.01 2017/10/24
  * @task HomeWork Java2 lesson 01
  */
+
+import animals.Animal;
 
 public interface Obstacle {
     String getName();

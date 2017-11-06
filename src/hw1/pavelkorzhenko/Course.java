@@ -8,14 +8,13 @@ package pavelkorzhenko;
  * @task HomeWork Java2 lesson 01
  */
 
-import animals.Animal;
-import obstances.*;
+import pavelkorzhenko.obstances.*;
 
 public class Course {
     private Obstacle[] obStacles;
 
     public Course() {
-        this.obStacles = new Obstacle[]{new Rock(750), new Wall(50), new Track(100), new Water(150)};
+        this.obStacles = new Obstacle[]{new Wall(50), new Track(100), new Water(150)};
     }
 
     public void doIt(Team tM) {

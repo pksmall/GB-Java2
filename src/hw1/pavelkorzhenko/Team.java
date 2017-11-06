@@ -7,6 +7,7 @@ package pavelkorzhenko;
  * @version v.03 2017/10/26
  * @task HomeWork Java2 lesson 01
  */
+
 import animals.*;
 
 public class Team {

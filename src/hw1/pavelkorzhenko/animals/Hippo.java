@@ -6,6 +6,7 @@ package pavelkorzhenko.animals;
  * @author (your name)
  * @version (a version number or a date)
  */
+
 public class Hippo extends Animal implements Swimable {
     private int swim_limit;
 

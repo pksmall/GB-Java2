@@ -6,6 +6,7 @@ package pavelkorzhenko.animals;
  * @author (your name)
  * @version (a version number or a date)
  */
+
 public class Hen extends Animal implements Jumpable {
     private float jump_limit;
 

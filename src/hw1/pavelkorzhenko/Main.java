@@ -32,7 +32,7 @@ public class Main {
 
     public static void main(String[] args) {
         // our team
-        Animal[] zooTeam = {new Cat("Murzik"), new Hen("Izzy"), new Hippo("Hippopo"), new Duck("Donald")};
+        Animal[] zooTeam = {new Cat("Murzik"), new Hen("Izzy"), new Hippo("Hippopo"), new Cat("Byte")};
 
 
         Course c = new Course(); // Создаем полосу препятствий

@@ -6,6 +6,7 @@ package pavelkorzhenko.animals;
  * @author (your name)
  * @version (a version number or a date)
  */
+
 public class Cat extends Animal implements Jumpable, Swimable {
     private int swim_limit;
     private float jump_limit;
