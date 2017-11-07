@@ -37,7 +37,7 @@ public class GBJava2Task04 extends JFrame  implements ActionListener{
 
     GBJava2Task04() {
         try {
-            fh = new FileHandler("MyLogFile.log");
+            fh = new FileHandler("MyLogFile.log", true);
             logger.setUseParentHandlers(false);
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
