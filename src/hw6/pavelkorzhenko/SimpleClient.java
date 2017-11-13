@@ -1,10 +1,19 @@
-package pavelkorzhenko; /**
- * Java. Level 2. Lesson 6
- * Simple chat client
+package pavelkorzhenko;
+
+/**
+ * @author Pavel Korzhenko
+ * @version 0.1 2017/11/11
+ * @task 06
+ * @mark
  *
- * @author Sergey Iryupin
- * @version 0.1 dated Jun 28, 2017
+ * 1. Разобраться с кодом, показанным на занятии. Модифицировать код SimpleClient так, чтобы клиент мог
+ * читать сообщения от сервера.
+ * @see this
+ *
+ * 2. *** Написать приложение, атакующее HelloServer так, чтобы вызвать отказ в обслуживании.
+ * @see SocketClient
  */
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
