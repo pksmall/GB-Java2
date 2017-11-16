@@ -1,26 +1,36 @@
+package pavelkorzhenko;
+
 /**
- * Java. Level 2. Lesson 7
- * Simple server for chat
+ * @author Pavel Korzhenko
+ * @version 0.1 2017/11/14
+ * @task 07
+ * @mark
  *
- * @author Sergey Iryupin
- * @version 0.2 dated Apr, 14 2017
+ * 1. Разобраться с кодом, скачать, установить и опробовал в работе pavelkorzhenko.SQLite драйвер.
+ *
+ * 2. * Разобраться: что происходит с нитью ServerListener клиента, когда клиент завершает работу.
+ *      Предложить варианты исправления кода.
+ *
+ * 3. * Разобраться: что происходит с нитью ServerListener клиента, когда клиент завершает работу. Предложить
+ *      варианты исправления кода.
  */
+
 import java.io.*;
 import java.net.*;
 import java.sql.*;
 import java.util.*;
 
-class SimpleServer implements IConstants {
+class GbJavaTask07Server implements IConstants {
 
     int client_count = 0;
     ServerSocket server;
     Socket socket;
 
     public static void main(String[] args) {
-        new SimpleServer();
+        new GbJavaTask07Server();
     }
 
-    SimpleServer() {
+    GbJavaTask07Server() {
         System.out.println(SERVER_START);
         new Thread(new CommandHandler()).start();
         try {
@@ -96,7 +106,7 @@ class SimpleServer implements IConstants {
             try {
                 socket = clientSocket;
                 reader = new BufferedReader(
-                    new InputStreamReader(socket.getInputStream()));
+                        new InputStreamReader(socket.getInputStream()));
                 writer = new PrintWriter(socket.getOutputStream());
                 name = "Client #" + client_count;
             } catch(Exception ex) {

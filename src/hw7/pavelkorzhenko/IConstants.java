@@ -1,3 +1,5 @@
+package pavelkorzhenko;
+
 interface IConstants {
     final String DRIVER_NAME = "org.sqlite.JDBC";
     final String SQLITE_DB = "jdbc:sqlite:chat.db";

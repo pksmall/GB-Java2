@@ -1,4 +1,4 @@
-/**
+package pavelkorzhenko; /**
  * Java. Level 2. Lesson 7
  * Making db file with users
  *

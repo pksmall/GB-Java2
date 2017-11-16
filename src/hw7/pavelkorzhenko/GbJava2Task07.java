@@ -1,16 +1,22 @@
+package pavelkorzhenko;
+
 /**
- * Java. Level 2. Lesson 7
- * Simple chat client
+ * @author Pavel Korzhenko
+ * @version 0.1 2017/11/14
+ * @task 07
+ * @mark
  *
- * @author Sergey Iryupin
- * @version 0.2 dated Apr, 14 2017
+ * 1. Разобраться с кодом, скачать, установить и опробовал в работе pavelkorzhenko.SQLite драйвер.
+ *
+ * 2. * Разобраться: что происходит с нитью ServerListener клиента, когда клиент завершает работу.
+ *      Предложить варианты исправления кода.
  */
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
-class SimpleClient implements IConstants {
-
+class GbJava2Task07 implements IConstants {
     Socket socket;
     PrintWriter writer;
     BufferedReader reader;
@@ -18,17 +24,17 @@ class SimpleClient implements IConstants {
     String message;
 
     public static void main(String[] args) {
-        new SimpleClient();
+        new GbJava2Task07();
     }
 
-    SimpleClient() {
+    GbJava2Task07() {
         scanner = new Scanner(System.in);
         System.out.println(CONNECT_TO_SERVER);
         try {
             socket = new Socket(SERVER_ADDR, SERVER_PORT);
             writer = new PrintWriter(socket.getOutputStream());
             reader = new BufferedReader(
-                new InputStreamReader(socket.getInputStream()));
+                    new InputStreamReader(socket.getInputStream()));
             writer.println(getLoginAndPassword()); // send: auth <login> <passwd>
             writer.flush();
             new Thread(new ServerListener()).start();
@@ -63,7 +69,7 @@ class SimpleClient implements IConstants {
             try {
                 while ((message = reader.readLine()) != null) {
                     System.out.print(message.equals("\0")?
-                        CLIENT_PROMPT : message + "\n");
+                            CLIENT_PROMPT : message + "\n");
                     if (message.equals(AUTH_FAIL))
                         System.exit(-1); // terminate client
                 }
