@@ -2,14 +2,11 @@ package pavelkorzhenko;
 
 /**
  * @author Pavel Korzhenko
- * @version 0.1 2017/11/14
+ * @version 0.2 2017/11/16
  * @task 07
  * @mark
  *
  * 1. Разобраться с кодом, скачать, установить и опробовал в работе pavelkorzhenko.SQLite драйвер.
- *
- * 2. * Разобраться: что происходит с нитью ServerListener клиента, когда клиент завершает работу.
- *      Предложить варианты исправления кода.
  *
  * 3. * Разобраться: что происходит с нитью ServerListener клиента, когда клиент завершает работу. Предложить
  *      варианты исправления кода.
@@ -136,6 +133,8 @@ class GbJavaTask07Server implements IConstants {
                         } else if (!message.equalsIgnoreCase(EXIT_COMMAND)) {
                             writer.println("echo: " + message);
                             writer.println("\0");
+                        } else {
+                            writer.println(EXIT_COMMAND);
                         }
                         writer.flush();
                     }
