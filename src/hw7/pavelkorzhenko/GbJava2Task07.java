@@ -11,6 +11,7 @@ package pavelkorzhenko;
  * 2. * Разобраться: что происходит с нитью ServerListener клиента, когда клиент завершает работу.
  *      Предложить варианты исправления кода.
  * @see lines 42-56
+ *
  */
 
 import java.io.*;
@@ -51,8 +52,11 @@ class GbJava2Task07 implements IConstants {
             } while (!message.equals(EXIT_COMMAND));
 
             // заканчиваем поток для чтения
-            if (thListener.isInterrupted()) {
+            if (thListener.isAlive()) {
+                System.out.println("thread is alive");
                 thListener.interrupt();
+            } else {
+                System.out.println("thread dead");
             }
 
             socket.close();
@@ -79,20 +83,19 @@ class GbJava2Task07 implements IConstants {
         @Override
         public void run() {
             try {
-                System.out.println("l..");
-                while ((message = reader.readLine()) != null) {
-                    System.out.print(message.equals("\0") ?
-                            CLIENT_PROMPT : message + "\n");
-                    if (message.equals(AUTH_FAIL)) {
-                        System.out.println("..e");
+                while (true) {
+                    if (Thread.currentThread().interrupted()) {
+                        System.out.println("e..");
                         System.exit(-1); // terminate client
                     }
-                    if (message.equalsIgnoreCase(EXIT_COMMAND)) {
-                        System.out.println("..e");
-                        System.exit(-1);
+                    if ((message = reader.readLine()) != null) {
+                        System.out.print(message.equals("\0") ?
+                                CLIENT_PROMPT : message + "\n");
+                        if (message.equals(AUTH_FAIL)) {
+                            System.exit(-1); // terminate client
+                        }
                     }
                 }
-                System.out.println("..e");
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }

@@ -10,6 +10,8 @@ package pavelkorzhenko;
  *
  * 3. * Разобраться: что происходит с нитью ServerListener клиента, когда клиент завершает работу. Предложить
  *      варианты исправления кода.
+ *
+ * @run java -classpath .;d:/java/jar/sqlite-jdbc-3.16.1.jar pavelkorzhenko/GbJava2Task07Server
  */
 
 import java.io.*;
@@ -17,17 +19,17 @@ import java.net.*;
 import java.sql.*;
 import java.util.*;
 
-class GbJavaTask07Server implements IConstants {
+class GbJava2Task07Server implements IConstants {
 
     int client_count = 0;
     ServerSocket server;
     Socket socket;
 
     public static void main(String[] args) {
-        new GbJavaTask07Server();
+        new GbJava2Task07Server();
     }
 
-    GbJavaTask07Server() {
+    GbJava2Task07Server() {
         System.out.println(SERVER_START);
         new Thread(new CommandHandler()).start();
         try {
